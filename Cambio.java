@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Cambio {
@@ -12,8 +14,8 @@ public class Cambio {
         int[] player2 = new int[4];
 
         // Deck and discard pile
-        ArrayList<Integer> deck = createDeck();
-        ArrayList<Integer> discardPile = new ArrayList<Integer>();
+        List<Integer> deck = createDeck();
+        List<Integer> discardPile = new ArrayList<Integer>();
 
         // Draw top card from deck, put into discard pile.
         discardPile.add(deck.get(deck.size() - 1));
@@ -79,7 +81,7 @@ public class Cambio {
     }
 
     public static boolean playerTurn(String playerName, int[] playerHand,
-            ArrayList<Integer> deck, ArrayList<Integer> discard) {
+            List<Integer> deck, List<Integer> discard) {
         clearScreen();
 
         System.out.println(playerName + "'s turn: ");
@@ -135,8 +137,8 @@ public class Cambio {
         return false;
     }
 
-    public static ArrayList<Integer> createDeck() {
-        ArrayList deck = new ArrayList<Integer>();
+    public static List<Integer> createDeck() {
+        var deck = new ArrayList<Integer>();
         for (int i = 1; i <= 4; i++) { // for each suit
             for (int j = 1; j <= 13; j++) {
                 deck.add(j);    // add card number
@@ -148,7 +150,7 @@ public class Cambio {
         return deck;
     }
 
-    public static void dealToPlayer(ArrayList<Integer> availableCards, int[] playerHand) {
+    public static void dealToPlayer(List<Integer> availableCards, int[] playerHand) {
         for (int i = 0; i < playerHand.length; i++) {
             playerHand[i] = availableCards.remove(availableCards.size() - 1);
         }
